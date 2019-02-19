@@ -3,16 +3,19 @@ package d.jay.viemosample;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import d.jay.viemosample.Adapter.CategeoryListAdapter;
 import d.jay.viemosample.Model.CategeoryModel;
 import d.jay.viemosample.Presenter.CategeoryFragmentPresenter;
 
@@ -25,7 +28,9 @@ public class CategeoryFragments extends Fragment implements CategeoryfragmentsVi
     View view;
     RecyclerView recyclerView;
     CategeoryFragmentPresenter categeoryFragmentPresenter;
-
+    CategeoryListAdapter categeoryListAdapter;
+    GridLayoutManager gridLayoutManager;
+    ProgressBar progressBar;
 
     public CategeoryFragments() {
         // Required empty public constructor
@@ -37,6 +42,7 @@ public class CategeoryFragments extends Fragment implements CategeoryfragmentsVi
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_categeory_fragments, container, false);
         recyclerView = view.findViewById(R.id.recyclerView);
+        progressBar = view.findViewById(R.id.progressBar);
         initilizePresenter();
         getCategeoryList();
         return view;
@@ -54,16 +60,20 @@ public class CategeoryFragments extends Fragment implements CategeoryfragmentsVi
 
     @Override
     public void showProgressbar() {
-
+        progressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideProgressbar() {
-
+        progressBar.setVisibility(View.GONE);
     }
 
     @Override
     public void gotListOfCategeory(ArrayList<CategeoryModel> categeoryList) {
         Log.i(TAG,"this is value of response" +categeoryList.get(0).getCategeoryName());
+        gridLayoutManager = new GridLayoutManager(getActivity(), 2, GridLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(gridLayoutManager);
+        categeoryListAdapter = new CategeoryListAdapter(getActivity(), categeoryList);
+        recyclerView.setAdapter(categeoryListAdapter);
     }
 }

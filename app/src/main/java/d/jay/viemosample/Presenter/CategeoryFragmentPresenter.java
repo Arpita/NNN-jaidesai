@@ -37,7 +37,7 @@ public class CategeoryFragmentPresenter implements CategeoryFragmentPresenterInt
     }
     @Override
     public void getCategeoryList() {
-
+        categeoryfragmentsViewInterface.showProgressbar();
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET,
                 UrlUtils.GETCATEGEORYLIST, null,
                 new Response.Listener<JSONObject>() {
@@ -54,6 +54,7 @@ public class CategeoryFragmentPresenter implements CategeoryFragmentPresenterInt
                                 categeoryList.add(categeoryModel);
                             }
                             categeoryfragmentsViewInterface.gotListOfCategeory(categeoryList);
+                            categeoryfragmentsViewInterface.hideProgressbar();
                         } catch (Exception e) {
 
                             Log.i(TAG, "this is inside catch " + e.getMessage());
@@ -65,6 +66,8 @@ public class CategeoryFragmentPresenter implements CategeoryFragmentPresenterInt
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.i(TAG, "this is inside errorresponse " + error.getMessage());
+                categeoryfragmentsViewInterface.hideProgressbar();
+
                 // hide the progress dialog
 
             }
@@ -84,6 +87,8 @@ public class CategeoryFragmentPresenter implements CategeoryFragmentPresenterInt
         }catch (Exception e)
         {
             Log.i(TAG, "this is inside mainCatch " + e.getMessage());
+            categeoryfragmentsViewInterface.hideProgressbar();
+
 
         }
     }
