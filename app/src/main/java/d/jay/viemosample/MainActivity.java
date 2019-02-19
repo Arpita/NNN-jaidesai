@@ -5,9 +5,15 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
+    CategeoryFragments categeoryFragments;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        categeoryFragments = new CategeoryFragments();
+        getSupportFragmentManager().beginTransaction().add(R.id.content_frame,categeoryFragments)
+                .commit();
     }
 }
+
