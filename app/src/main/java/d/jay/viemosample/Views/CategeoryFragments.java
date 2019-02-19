@@ -1,4 +1,4 @@
-package d.jay.viemosample;
+package d.jay.viemosample.Views;
 
 
 import android.os.Bundle;
@@ -13,17 +13,17 @@ import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import d.jay.viemosample.Adapter.CategeoryListAdapter;
+import d.jay.viemosample.ViewsCallBack.CategeoryfragmentsViewInterface;
 import d.jay.viemosample.Model.CategeoryModel;
 import d.jay.viemosample.Presenter.CategeoryFragmentPresenter;
+import d.jay.viemosample.R;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CategeoryFragments extends Fragment implements CategeoryfragmentsViewInterface{
+public class CategeoryFragments extends Fragment implements CategeoryfragmentsViewInterface {
     String TAG ="CategeoryFragments";
     View view;
     RecyclerView recyclerView;

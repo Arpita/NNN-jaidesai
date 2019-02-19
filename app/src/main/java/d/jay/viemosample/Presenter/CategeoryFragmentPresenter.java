@@ -7,7 +7,6 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONArray;
@@ -17,7 +16,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import d.jay.viemosample.CategeoryfragmentsViewInterface;
+import d.jay.viemosample.ViewsCallBack.CategeoryfragmentsViewInterface;
 import d.jay.viemosample.Model.CategeoryModel;
 import d.jay.viemosample.Utils.Constant;
 import d.jay.viemosample.Utils.UrlUtils;
